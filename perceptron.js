@@ -1,25 +1,26 @@
-function Perceptron() {
-  this.weights = []
+// Perceptron - Capable of multiclass classification.
+class Perceptron {
+  constructor() {
+    this.weights = []
+  }
 
-  this.build = function() {
+  init() {
+
     for (var i = 0; i < 2; i++) {
-      weights.push(random(-1, 1));
+      this.weights.push(random(-1, 1));
     }
   }
 
-  this.createWeights = function(size) {
-    temp = new Array(size);
-    for (var i = 0; i < temp.length; i++) {
-      temp[i] =
+  predict(inputs) {
+    let sum = 0;
+    for (var i = 0; i < this.weights.length; i++) {
+      sum += inputs[i] * this.weights[i];
     }
+    console.log(sum);
+    return this.activation(sum);
   }
 
-  this.update = function() {
-    console.log('test');
-  };
-
-  this.show = function() {
-
-  };
-
+  activation(value) {
+    return (value >= 0) ? 1 : -1; // Change to consider a multiclass percepitron.
+  }
 }
